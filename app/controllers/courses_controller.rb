@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end 
 
-  def photo_params
+  def current_course
     params.require(:course).permit(:image, :caption)    
   end
 
