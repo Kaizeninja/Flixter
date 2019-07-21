@@ -6,8 +6,8 @@ class Course < ApplicationRecord
   validates :description, presence: true
   validates :cost, presence: true, numericality: {greater_than_or_equal_to: 0}
 
-  class Course < ActiveRecord::Base
+
   mount_uploader :image, ImageUploader
 end
-end
+
 
