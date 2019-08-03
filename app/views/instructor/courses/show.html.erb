@@ -2,7 +2,8 @@
   $(function() {
 
 $('.new-lesson-button').click(function( event ) {
-  alert( event.target );
+  var lessonUrl = $( event.target).data('lesson-url');
+  alert( lessonUrl );
     });
 
     $('.lessons').sortable({
@@ -69,7 +70,7 @@ $('.new-lesson-button').click(function( event ) {
 
 <ul class="lessons">
   <% section.lessons.rank(:row_order).each do |lesson| %>
-    <li data-update-url="<%= instructor_lesson_path lesson %>">
+    <li data-update-url="<%= instructor_lesson_path(lesson) %>">
                <div class="row">
                 <div class="col-1">
                   <br />
@@ -130,7 +131,7 @@ $('.new-lesson-button').click(function( event ) {
         </button>
        <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
      </div>
-     <%= simple_form_for @lesson, url: "#" do |f| %>
+<%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm' } do |f| %>
       <div class="modal-body">
           <%= f.input :title %>
           <%= f.input :subtitle %>
