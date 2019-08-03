@@ -1,7 +1,6 @@
 <script>
   $(function() {
-
-$('.new-lesson-button').click(function( event ) {
+    $('.new-lesson-button').click(function( event ) {
   var lessonUrl = $( event.target).data('lesson-url');
   $('#newLessonForm').attr('action', lessonUrl);
 });
@@ -50,29 +49,24 @@ $('.new-lesson-button').click(function( event ) {
     </button>
   </div>
 
-  <br />
-  <%= link_to 'Preview As Student...', course_path(current_course), class: 'btn btn-warning float-right' %>
-  <br class="clr" />
+       
+        <!-- Button trigger modal -->
+       <button type="button" class="btn btn-primary btn-lg float-right new-lesson-button" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section) %>">
+          New Lesson...
+        </button>
 
-    <ul class="sections">
+<br class="clr" />
+<br class="clr" />
+ 
+   <ul class="sections">
    <% current_course.sections.each do |section| %>
-  <li data-update-url="<%= instructor_section_path section %>" class="section-li">
-    <div class="header">
+    <li data-update-url="<%= instructor_section_path(section) %>" class="section-li">
       <span class="fa fa-ellipsis-v"></span>
       <%= section.title %>
-    </div>
-
-    <!-- Button trigger modal -->
-     <button type="button" class="btn btn-primary btn-lg float-right new-lesson-button" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section) %>">
-          New Lesson...
-      </button>
- 
-<br class="clr" />
-<br class="clr" />
-
 <ul class="lessons">
   <% section.lessons.rank(:row_order).each do |lesson| %>
     <li data-update-url="<%= instructor_lesson_path(lesson) %>">
+    <span class="fa fa-ellipsis-v"></span>
                <div class="row">
                 <div class="col-1">
                   <br />
