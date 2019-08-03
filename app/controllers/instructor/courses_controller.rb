@@ -5,6 +5,7 @@ class Instructor::CoursesController < ApplicationController
 
   def new
      @course = Course.new
+     @lesson = Lesson.new
   end
 
     def create
@@ -17,8 +18,8 @@ class Instructor::CoursesController < ApplicationController
   end
 
   def show
+    @section = Section.new
   end
-
   private
 
   def require_authorized_for_current_course
