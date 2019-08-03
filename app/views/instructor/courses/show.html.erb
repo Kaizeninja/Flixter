@@ -5,9 +5,8 @@
   $('#newLessonForm').attr('action', lessonUrl);
 });
 
-});
   $(function() {
-   $('.lessons').sortable({
+    $('.lessons').sortable({
       update: function( event, ui ) {
         $.ajax({
           type: 'PUT',
@@ -17,22 +16,22 @@
         });
       }
     });
-  });
-    $(function() {
+
+
     $('.sections').sortable({
       update: function( event, ui ) {
         $.ajax({
           type: 'PUT',
           url: ui.item.data('update-url'),
           dataType: 'json',
-          data: { section: { row_order_position: ui.item.index() } } 
+          data: { section: { row_order_position: ui.item.index() } }
         });
       }
     });
+
   });
 </script>
 
-<br />
 
 
 <br />
@@ -51,7 +50,7 @@
 
        
         <!-- Button trigger modal -->
-       <button type="button" class="btn btn-primary btn-lg float-right new-lesson-button" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section) %>">
+       <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(current_section) %>">
           New Lesson...
         </button>
 
