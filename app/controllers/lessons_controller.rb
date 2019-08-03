@@ -8,6 +8,7 @@ class LessonsController < ApplicationController
 
   private
 
+
   def require_enrolled_in_current_lesson
     course = current_lesson.section.course
     if !current_user.enrolled_in?(course)

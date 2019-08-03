@@ -34,16 +34,15 @@
 <% if current_course.image.url %>
   <%= image_tag current_course.image.url, class: 'img-fluid' %>
 <% end %>
-  <br />
-  <%= link_to 'Preview As Student...', course_path(current_course), class: 'btn btn-warning float-right' %>
-  <br class="clr" />
 
-  <div class="text-center">
-       <!-- Button trigger modal -->
+    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newSectionModal">
       Add a new section...
     </button>
-  </div>
+
+  <br />
+  <%= link_to 'Preview As Student...', course_path(current_course), class: 'btn btn-warning float-right' %>
+  <br class="clr" />
 
   <ul>
    <% current_course.sections.each do |section| %>
@@ -52,10 +51,7 @@
       <span class="fa fa-ellipsis-v"></span>
       <%= section.title %>
     </div>
-             <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newLessonModal">
-          New Lesson...
-        </button>
+ 
  <br class="clr" />
 <br class="clr" />
 <ul class="lessons">
@@ -104,8 +100,11 @@
     </div>
   </div>
 </div>
-<% end%>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newLessonModal">
+   New Lesson...
+</button>
 
 <!-- Modal -->
 <div class="modal fade" id="newLessonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -115,22 +114,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
+       <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
+     </div>
       <div class="modal-body">
-       <%= simple_form_for @lesson, url: "#" do |f| %>
-          <%= f.input :title %>
-          <%= f.input :subtitle %>
-          <%= f.input :video %>
-          <br />
-          <%= f.submit "Add the lesson", class: 'btn btn-primary' %>
-          <br />
-          <br />
-        <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= f.submit "Add the lesson", class: 'btn btn-primary' %>
-        </div>
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
 </div>
+<% end %>
